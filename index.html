@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Web App</title>
+</head>
+<body>
+  <h1>Simple Web Application</h1>
+  <button id="fetchMessageBtn">Fetch Message from API</button>
+  <p id="message"></p>
+
+  <script>
+    document.getElementById('fetchMessageBtn').addEventListener('click', () => {
+      fetch('http://localhost:3000/api/emmanuel-info/')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('message').innerText = data.Name;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
